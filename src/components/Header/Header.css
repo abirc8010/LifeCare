@@ -1,0 +1,57 @@
+.health-icon{
+    height:7vh;
+    width:7vh;
+    background-image: url("health.webp");
+    background-size: cover;
+}
+.top-bar{
+    height: 10vh,  !important;;
+    background-color:rgb(233, 35, 99)!important;
+    display: flex!important;
+    position:fixed!important;
+    left: 0 !important;
+    top:0 !important;
+    width:100% !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.391)  !important;
+}
+.Lifecare{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(253, 0, 0, 0.666);
+}
+.navbar{
+    background-color:rgb(244, 143, 177) ;
+    height:100%;
+    width:70%;
+    font-size: large;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    color: white;
+    align-items: center;
+}
+.link{
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 3px!important;
+    margin-right: 3px!important;
+}
+.link:hover{    
+    background-color: rgba(189, 16, 16, 0.652)!important;
+}
+.dialog{
+    height:40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(170, 44, 82, 0.366);
+}
+.text-field{
+    background-color: aliceblue;
+}
+.dialog-title{
+    text-align: center;
+    color: aliceblue;
+    background-color: rgb(137, 20, 57);
+}

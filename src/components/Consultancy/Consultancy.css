@@ -1,0 +1,24 @@
+.box{
+    position: absolute;
+    top: 0px ;
+    left:0px;
+    right:0px;
+}
+.pack{
+    height: 100%;
+    display:flex;
+    justify-content: start;
+    align-items: center;
+}
+.video{
+    object-fit: fill;
+    height:100vh;
+    width: 100vw;
+}
+.meet{
+    z-index:1;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 20px;
+    top:80px;
+}

@@ -1,0 +1,55 @@
+.heading{
+    top:10px;
+    position: relative;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    border-bottom-style:solid;
+     border-bottom-width: 2px;
+     padding-bottom: 15px;
+    color: red;
+}
+.contain{
+    padding: 30px;
+    position: absolute;
+    left: 0px;
+    right:0px;
+    top:60px;
+    background-color:#e4426d53;
+}
+.service{
+    margin:20px 20px 20px 20px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    height: 280px;
+    width: 251px;
+    text-align: center;
+    background-color: #97033ee0;
+    box-shadow: 0 4px 8px black;
+    
+}
+.service:hover{
+    box-shadow: 0 8px 16px black;
+    
+}
+.service-image{
+    height: 192px;
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  
+}
+.service-grid{
+    display: flex;
+    justify-content: space-evenly;
+    position:relative;
+    top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    /* border: 2px solid black; */
+}
+.service-description{
+    color:white;
+    font-size: xx-large;
+}

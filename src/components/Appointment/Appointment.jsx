@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
 import "./Appointment.css"
 import React, { useState, useEffect } from 'react';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import Button from '@mui/material/Button';
 export default function () {
     const navigate = useNavigate();
     const sendToBook = () => {
@@ -34,10 +34,10 @@ export default function () {
                 </div>
             ))}
             <div className="booking">
-                <div>Make an Appointment</div>
-                <button className="booking-button" onClick={() => sendToBook()}>
+                <div className="con">Make an Appointment with our experts and get the best consultation</div>
+                <Button className="booking-button" onClick={() => sendToBook()} >
                     BOOK AN APPOINTMENT <AddCircleIcon />
-                </button>
+                </Button>
             </div>
         </div>
 

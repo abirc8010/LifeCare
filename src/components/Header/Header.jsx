@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,53 +17,86 @@ import "../Login/firebase"
 import UserLogin from "../Login/login"
 import { useNavigate } from "react-router-dom";
 import UserSignup from '../Login/Signup';
+import { signOut } from 'firebase/auth';
+import { auth } from '../Login/firebase';
 const pages = [
-               {page:'Home', route:"/"} ,
-               {page:'Services',route:"/services"},
-               {page:'Nutrition checking',route:"/nutrition"},
-               {page:'Instant Consultancy',route:"/video"},
-               {page:'About', route:"/about"}];
-const settings = ['Login','Sign Up'];
-export default function () {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+    { page: 'Home', route: "/" },
+    { page: 'Services', route: "/services" },
+    { page: 'Nutrition checking', route: "/nutrition" },
+    { page: 'Instant Consultancy', route: "/video" },
+    { page: 'About', route: "/about" }];
+const Before_Login = ['Login', 'Sign Up'];
+const After_Login = ['Dashboard', 'My Bookings', 'Log out'];
+export default function ({ hasLoggedin, setLoginStatus }) {
+
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
     const [signupOpen, setSignupOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
-  const navigate = useNavigate();
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  const sendToRoute = (link)=>{
-        navigate(link);
-          window.location.reload();
+    const navigate = useNavigate();
+    useEffect(() => {
+        const storedLoginStatus = localStorage.getItem('hasLoggedin');
+        if (storedLoginStatus) {
+            setLoginStatus(storedLoginStatus === 'true');
+        }
+    }, []);
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            console.log("Logged out");
+            setLoginStatus(false);
+            handleCloseUserMenu();
+            localStorage.setItem('hasLoggedin', 'false');
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
-     const handleLoginOpen = () => {
+    const handleDashboard = () => {
+        navigate("/dashboard");
+    };
+    const handleBooking = () => {
+        navigate("/mybooking");
+    };
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+    const sendToRoute = (link) => {
+        navigate(link);
+        window.location.reload();
+    }
+
+    const handleLoginOpen = () => {
         setLoginOpen(true);
         handleCloseUserMenu();
     };
-     const handleCloseLogin = () => {
+
+    const handleCloseLogin = () => {
         setLoginOpen(false);
     };
+
     const handleSignupOpen = () => {
         setSignupOpen(true);
         handleCloseUserMenu();
     };
+
     const handleCloseSignup = () => {
         setSignupOpen(false);
-        };
+    };
 
-     return (
+    return (
         <>
             <AppBar className="top-bar">
                 <Container maxWidth="xl">
@@ -179,17 +212,24 @@ export default function () {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={setting === 'Login' ? handleLoginOpen : handleSignupOpen}>
-                                        <Typography textAlign="center">{setting}</Typography>
-                                    </MenuItem>
-                                ))}
+                                {!hasLoggedin ?
+                                    Before_Login.map((setting) => (
+                                        <MenuItem key={setting} onClick={setting === 'Login' ? handleLoginOpen : handleSignupOpen}>
+                                            <Typography textAlign="center">{setting}</Typography>
+                                        </MenuItem>
+                                    )) :
+                                    After_Login.map((setting) => (
+                                        <MenuItem key={setting} onClick={setting === 'Log out' ? handleLogout : setting === 'Dashboard' ? handleDashboard : handleBooking}>
+                                            <Typography textAlign="center">{setting}</Typography>
+                                        </MenuItem>
+                                    ))
+                                }
                             </Menu>
                         </Box>
                     </Toolbar>
                 </Container>
-              <UserLogin open={loginOpen} onClose={handleCloseLogin}/>
-              <UserSignup open={signupOpen} onClose={handleCloseSignup}/>
+                <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} />
+                <UserSignup open={signupOpen} onClose={handleCloseSignup} />
             </AppBar>
         </>
     );

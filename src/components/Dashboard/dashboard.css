@@ -1,0 +1,32 @@
+.userdiv{
+    position: absolute;
+    left: 0;
+    height:100vh;
+    width: 100%;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+     background-color: #760331c3;
+    align-items: center;
+    color:white
+}
+.info{
+    height: 60%;
+    width: 70%;
+    background: linear-gradient(175deg, #89114192, #760331c1,#730933da);
+    padding:30px 30px 30px 30px;
+}
+.userName{
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+.inputfield{
+    height: 20px;
+    border: none;
+    font-size: large;
+    padding:4px 4px 4px 4px;
+}
+.inputfield:disabled{
+    opacity:0.8;
+    background-color: rgb(255, 255, 255);
+}

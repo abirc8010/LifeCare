@@ -7,17 +7,19 @@ import Nutrition from "./components/Nutrition.jsx";
 import About from "./components/About.jsx";
 import BookingPage from "./components/Booking/Booking.jsx";
 import Consultancy from "./components/Consultancy/Consultancy.jsx";
+import Dashboard from "./components/Dashboard/dashboard.jsx";
 export default function(){
     const [hasLoggedin, setLoginStatus] = useState(false);
+    const [username,setUsername]=useState('');
     return (
      <BrowserRouter>
-     <Header hasLoggedin={hasLoggedin} setLoginStatus={setLoginStatus}/>
+     <Header hasLoggedin={hasLoggedin} setLoginStatus={setLoginStatus} setUsername={setUsername}/>
        <Routes>
           <Route path="/" element={<Home/>}>
           </Route>
           {
             hasLoggedin?(
-                <Route path="/dashboard" element={<Services/>}></Route>
+                <Route path="/dashboard" element={<Dashboard username={username}/>}></Route>
             ):(<></>)
           }
            {

@@ -27,7 +27,7 @@ const pages = [
     { page: 'About', route: "/about" }];
 const Before_Login = ['Login', 'Sign Up'];
 const After_Login = ['Dashboard', 'My Bookings', 'Log out'];
-export default function ({ hasLoggedin, setLoginStatus }) {
+export default function ({ hasLoggedin, setLoginStatus ,setUsername}) {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
@@ -228,7 +228,7 @@ export default function ({ hasLoggedin, setLoginStatus }) {
                         </Box>
                     </Toolbar>
                 </Container>
-                <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} />
+                <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} setUserName={setUsername}/>
                 <UserSignup open={signupOpen} onClose={handleCloseSignup} />
             </AppBar>
         </>

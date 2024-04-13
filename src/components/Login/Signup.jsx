@@ -16,8 +16,9 @@ export default function ({ open, onClose }) {
         e.preventDefault();
         try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                userCredential.user.displayName = username;
-                console.log(userCredential.user);
+                 await updateProfile(userCredential.user, {
+                   displayName: username
+                          });
         } catch (error) {
             console.log(error);
         }

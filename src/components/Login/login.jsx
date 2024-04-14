@@ -3,18 +3,23 @@ import { useState } from 'react';
 import { auth } from '../Login/firebase';
 import Button from '@mui/material/Button';
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword,updateProfile } from 'firebase/auth';
-export default function ({ open, onClose, setLoginStatus ,setUserName}) 
+export default function ({ open, onClose, setLoginStatus ,setUserName,setMail}) 
 {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
       const handleLoginSubmit = async(e) => {
         e.preventDefault();
          try {
+           
            const u= await signInWithEmailAndPassword(auth,email, password);
+           setMail(email);
            console.log("Logged in!!");
+           console.log(u);
            setUserName(u.user.displayName);
            setLoginStatus(true);       
            localStorage.setItem('hasLoggedin', 'true');          
+           localStorage.setItem('username', u.user.displayName);     
+            localStorage.setItem('email', email);     
         } catch (error) {
             console.log("Failed");
         }

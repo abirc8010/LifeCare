@@ -27,7 +27,7 @@ const pages = [
     { page: 'About', route: "/about" }];
 const Before_Login = ['Login', 'Sign Up'];
 const After_Login = ['Dashboard', 'My Bookings', 'Log out'];
-export default function ({ hasLoggedin, setLoginStatus ,setUsername}) {
+export default function ({ hasLoggedin, setLoginStatus ,setUsername,setMail}) {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
@@ -46,7 +46,12 @@ export default function ({ hasLoggedin, setLoginStatus ,setUsername}) {
             console.log("Logged out");
             setLoginStatus(false);
             handleCloseUserMenu();
-            localStorage.setItem('hasLoggedin', 'false');
+            setLoginStatus(false);
+            setMail('');
+              localStorage.removeItem('hasLoggedin');
+              localStorage.removeItem('username');
+              localStorage.removeItem('email');
+              navigate('/');
         }
         catch (error) {
             console.log(error);
@@ -228,7 +233,7 @@ export default function ({ hasLoggedin, setLoginStatus ,setUsername}) {
                         </Box>
                     </Toolbar>
                 </Container>
-                <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} setUserName={setUsername}/>
+                <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} setUserName={setUsername} setMail={setMail}/>
                 <UserSignup open={signupOpen} onClose={handleCloseSignup} />
             </AppBar>
         </>

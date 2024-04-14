@@ -13,8 +13,10 @@
 .info{
     height: 60%;
     width: 70%;
-    background: linear-gradient(175deg, #89114192, #760331c1,#730933da);
+    position: relative;
+    background: linear-gradient(175deg, #c20751b7, #890a3dc0,#7a0433fd);
     padding:30px 30px 30px 30px;
+      box-shadow: 0 4px 10px black;
 }
 .userName{
     padding-bottom: 20px;
@@ -25,8 +27,41 @@
     border: none;
     font-size: large;
     padding:4px 4px 4px 4px;
+    width:80%;
 }
 .inputfield:disabled{
     opacity:0.8;
     background-color: rgb(255, 255, 255);
+}
+.edit{
+    margin-left: 20px;
+    margin-top:10px;
+    height:30px;
+    width:40px;
+    background-color: rgb(118, 15, 56);
+    color:white;
+    border:none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px black;
+}
+.edit:hover{
+    background-color: rgb(92, 5, 40);
+}
+.delete-account{
+    position: absolute;
+    bottom: 0;
+    right:0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(173, 25, 25);
+    height:40px;
+    padding:10px 10px 10px 10px;
+    cursor: pointer;
+    color: aliceblue;
+    border: none;
+       box-shadow: 0 2px 4px black;
+       border-radius: 8px;
+}
+.delete-account:hover{
+    background-color: rgb(120, 19, 19);
 }

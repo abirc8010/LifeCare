@@ -11,15 +11,16 @@ import Dashboard from "./components/Dashboard/dashboard.jsx";
 export default function(){
     const [hasLoggedin, setLoginStatus] = useState(false);
     const [username,setUsername]=useState('');
+      const [mail,setMail]=useState('');
     return (
      <BrowserRouter>
-     <Header hasLoggedin={hasLoggedin} setLoginStatus={setLoginStatus} setUsername={setUsername}/>
+     <Header hasLoggedin={hasLoggedin} setLoginStatus={setLoginStatus} setUsername={setUsername} setMail={setMail}/>
        <Routes>
           <Route path="/" element={<Home/>}>
           </Route>
           {
             hasLoggedin?(
-                <Route path="/dashboard" element={<Dashboard username={username}/>}></Route>
+                <Route path="/dashboard" element={<Dashboard setLoginStatus={setLoginStatus}/>}></Route>
             ):(<></>)
           }
            {

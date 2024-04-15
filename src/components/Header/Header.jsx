@@ -33,6 +33,7 @@ export default function ({ hasLoggedin, setLoginStatus ,setUsername,setMail}) {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [signupOpen, setSignupOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
+    const [loginmsg,setLoginmsg]=useState('');
     const navigate = useNavigate();
     useEffect(() => {
         const storedLoginStatus = localStorage.getItem('hasLoggedin');
@@ -47,6 +48,7 @@ export default function ({ hasLoggedin, setLoginStatus ,setUsername,setMail}) {
             setLoginStatus(false);
             handleCloseUserMenu();
             setLoginStatus(false);
+            setLoginmsg('');
             setMail('');
               localStorage.removeItem('hasLoggedin');
               localStorage.removeItem('username');
@@ -233,7 +235,7 @@ export default function ({ hasLoggedin, setLoginStatus ,setUsername,setMail}) {
                         </Box>
                     </Toolbar>
                 </Container>
-                <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} setUserName={setUsername} setMail={setMail}/>
+                <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} setUserName={setUsername} setMail={setMail} loginmsg={loginmsg} setLoginmsg={setLoginmsg}/>
                 <UserSignup open={signupOpen} onClose={handleCloseSignup} />
             </AppBar>
         </>

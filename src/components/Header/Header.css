@@ -41,10 +41,12 @@
     background-color: rgba(189, 16, 16, 0.652)!important;
 }
 .dialog{
-    height:40vh;
+    padding:20px 20px 20px 20px;
+    height:60vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: rgba(170, 44, 82, 0.366);
 }
 .text-field{
@@ -54,4 +56,31 @@
     text-align: center;
     color: aliceblue;
     background-color: rgb(137, 20, 57);
+}
+.other-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;   
+     width: 70px;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    border:none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.social-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.form{
+    margin-right:20px;
+}
+.auth-div{
+    height:50px;
+    width:80%;
+    display: flex;
+    justify-content: space-between;
 }

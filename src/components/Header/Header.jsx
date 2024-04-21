@@ -236,7 +236,7 @@ export default function ({ hasLoggedin, setLoginStatus ,setUsername,setMail}) {
                     </Toolbar>
                 </Container>
                 <UserLogin open={loginOpen} onClose={handleCloseLogin} setLoginStatus={setLoginStatus} setUserName={setUsername} setMail={setMail} loginmsg={loginmsg} setLoginmsg={setLoginmsg}/>
-                <UserSignup open={signupOpen} onClose={handleCloseSignup} />
+                <UserSignup open={signupOpen} onClose={handleCloseSignup} setLoginStatus={setLoginStatus} setUserName={setUsername} setMail={setMail} loginmsg={loginmsg} setLoginmsg={setLoginmsg}/>
             </AppBar>
         </>
     );
